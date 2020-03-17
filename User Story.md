@@ -1,4 +1,4 @@
-USER STORIES
+USER STORY
 
 When the URL is opened, an alert explaining what the game is appears
 -- When the User clicks OK, the game officially starts by:
