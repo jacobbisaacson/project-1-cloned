@@ -20,7 +20,7 @@ const game = {
                 if (timer > 0.85) {
                     let cols = document.querySelectorAll(`.row .col`)
                     for (let i = 0; i < cols.length; i++) {
-                        // console.log("dissappearing");
+                        // console.log(""
                         cols[i].innerHTML = ""
                     }
                     return
@@ -32,7 +32,7 @@ const game = {
                 let randRow = Math.floor(Math.random() * 3) + 1
                 let randCol = Math.floor(Math.random() * 3) + 1
                 document.querySelector(`.row${randRow} .col${randCol}`).appendChild(mole)
-            }, 500)
+            }, 600)
 
             let score = 0
             let moles = document.getElementsByClassName(`col`)
@@ -48,6 +48,7 @@ const game = {
                     }
                     document.querySelector('.player-one-score').innerText = score
                     // document.querySelector('.player-two-score').innerText = pTwoScore
+                    // how to keep the player1 and player 2 text in the box?
 
                 }
             }
@@ -59,4 +60,4 @@ game.start()
 //make timer to shut it off for each turn
 //give player 2 a turn
 //connect scoring to player 2's scoreboard
-//
+//its one function... lol
