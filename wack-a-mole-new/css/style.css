@@ -32,20 +32,19 @@ header {
 }
 
 .row {
-    width: 100%;
+    width: 95%;
     height: 33%;
     display: flex;
-    border: 4px solid pink;
+    border: 10px solid pink;
 }
 
 .col {
-    height: 100%;
+    height: 95%;
     width: 33%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0 auto;
-    border: 4px solid pink;
+    border: 10px solid pink;
 }
 
 #mole {
@@ -98,3 +97,8 @@ header {
     border-radius: 10px;
     box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
 }
+
+
+
+
+
