@@ -1,0 +1,97 @@
+body {
+    background-color: lightgreen;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 50px;
+    margin: 0 auto;
+}
+
+header {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.game {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.board {
+    width: 75%;
+    height: 75%;
+}
+
+.row {
+    width: 100%;
+    height: 33%;
+    display: flex;
+}
+
+.col {
+    border: 4px dotted pink;
+    height: 100%;
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#mole {
+    height: 100px;
+    width: 100px;
+    background-color: red;
+    border-radius: 50%;
+}
+
+.button {
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    margin: 0 auto;
+}
+
+.button button {
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+    padding: 10px;
+    background: skyblue;
+    border-radius: 10px;
+    border: 5px solid gold;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.player-one-score {
+    display: inline-block;
+    position: absolute;
+    top: 0%;
+    left: 5%;
+    width: 10%;
+    font-size: 20px;
+    background: lightpink;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.player-two-score {
+    display: inline-block;
+    position: absolute;
+    top: 10%;
+    left: 5%;
+    width: 10%;
+    font-size: 20px;
+    background: lightpink;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
+}
