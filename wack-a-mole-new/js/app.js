@@ -9,16 +9,16 @@ class Player {
 const game = {
 
     start: function() {
-        let button = document.querySelector('.button')
+        button = document.querySelector('.button')
         button.onclick = function() {
             const mole = document.createElement("div")
             mole.id = "mole"
 
             setInterval(() => {
-                let timer = Math.random()
+                timer = Math.random()
 
                 if (timer > 0.85) {
-                    let cols = document.querySelectorAll(`.row .col`)
+                    cols = document.querySelectorAll(`.row .col`)
                     for (let i = 0; i < cols.length; i++) {
                         // console.log(""
                         cols[i].innerHTML = ""
@@ -29,13 +29,13 @@ const game = {
                     return
                 }
 
-                let randRow = Math.floor(Math.random() * 3) + 1
-                let randCol = Math.floor(Math.random() * 3) + 1
+                randRow = Math.floor(Math.random() * 3) + 1
+                randCol = Math.floor(Math.random() * 3) + 1
                 document.querySelector(`.row${randRow} .col${randCol}`).appendChild(mole)
             }, 600)
 
-            let score = 0
-            let moles = document.getElementsByClassName(`col`)
+            score = 0
+            moles = document.getElementsByClassName(`col`)
 
             for (let i = 0; i < moles.length; i++) {
                 moles[i].onclick = function(e) {
