@@ -60,4 +60,5 @@ game.start()
 //make timer to shut it off for each turn
 //give player 2 a turn
 //connect scoring to player 2's scoreboard
-//its one function... lol
+// score and moles should be outside of the methods and in the STATE, but cant for some reason, doe stha tmatteR?
+
