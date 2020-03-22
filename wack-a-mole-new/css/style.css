@@ -18,16 +18,17 @@ header {
 }
 
 .game {
-    height: 100vh;
+    height: 85vh;
     width: 100vw;
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .board {
-    width: 75%;
-    height: 75%;
+    width: 70%;
+    height: 70%;
     margin: 0 auto;
 }
 

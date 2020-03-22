@@ -48,7 +48,7 @@ const game = {
 
     switchTurn: function() {
         if (game.timeElapsed >= 15) {
-            setTurn() // this isn't working (not changing to false)
+            game.setTurn() // this isn't working (not changing to false)
         }
     },
 
