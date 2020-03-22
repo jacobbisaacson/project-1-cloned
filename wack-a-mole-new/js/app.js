@@ -4,6 +4,8 @@ class Player {
   constructor(obj) {
     this.name = name
     this.playerScore = score
+    this.turn = turn
+    this.turnTime = 0
   }
 }
 
@@ -29,7 +31,7 @@ const game = {
             setInterval(() => {
                 timer = Math.random()
 
-                if (timer > 0.85) {
+                if (timer > 0.90) {
                     cols = document.querySelectorAll(`.row .col`)
                     for (let i = 0; i < cols.length; i++) {
                         // console.log(""
@@ -46,7 +48,7 @@ const game = {
                 document.querySelector(`.row${randRow} .col${randCol}`).appendChild(mole)
             }, 600)
 
-            score = 0
+            score = 0 // where the score starts when the button to start the game is clickd
             moles = document.getElementsByClassName(`col`)
 
             for (let i = 0; i < moles.length; i++) {
@@ -58,7 +60,7 @@ const game = {
                         score += 2
                         // pTwoScore += 2
                     }
-                    document.querySelector('.player-one-score').innerText = score
+                    document.querySelector('.player-one-score').innerText = "Player 1 Score: " + score
                     // document.querySelector('.player-two-score').innerText = pTwoScore
 
                     // how to keep the player1 and player 2 text in the box?
@@ -66,6 +68,12 @@ const game = {
                 }
             }
         }
+    },
+
+    checkTurn: function() {
+        // maybe set the turn timer first, 
+        // then a series of if statements, if the turntimer has expired, then shifts turns
+        // 
     }
 }
 game.start()
