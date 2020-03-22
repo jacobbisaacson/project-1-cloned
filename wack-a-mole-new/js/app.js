@@ -3,7 +3,7 @@ console.log("wack a mole");
 class Player {
     constructor(name) {
         this.name = name
-        // this.playerScore = 0
+        this.score = 0
     }
 }
 
@@ -19,9 +19,12 @@ const game = {
     // shows the correct score (current score) <--this is now activeplayer.score
     players: [],
     activePlayer: null,
-    timeElapsed: 0,
+    timeElapsed: 10,
     intervalID: null,
 
+ // = () => {
+     
+ // }
     addPlayers: function() {
         const player1 = new Player("Player One")
         this.players.push(player1)
@@ -31,16 +34,19 @@ const game = {
     },
 
     switchTurn: function() {
+        // game.stopTimer() // if (this.timeElapsed === 0) {
         if (this.players.length >= 2 && this.activePlayer === this.players[0]) {
             this.activePlayer = this.players[1]
         } else {
             this.activePlayer = this.players[0]
         }
+        game.startTimer()
+
     },
 
     start: function() {
-        if (this.activeplayer === this.players[0]) {
-
+        // if (this.activeplayer === this.players[0]) {
+            // if (this.timeElapsed === 0) { 
             button = document.querySelector('.button')
             button.onclick = function() {
                 const mole = document.createElement("div")
@@ -71,32 +77,36 @@ const game = {
                 for (let i = 0; i < moles.length; i++) {
                     moles[i].onclick = function(event) {
                         if (event.currentTarget.innerHTML == "") {
-                            score -= 1
-                            // gotta get player 2 score stuff in here
+                            score -= 1 // this.activePlayer.score
                         } else {
-                            score += 2
+                            score += 2 // this.activePlayer.score
                             // gotta get player 2 score stuff in here
-                        }
+                        } 
                         document.querySelector('.player-one-score').innerText = "Player 1 Score: " + score // (player 1 score only?)
                         // document.querySelector('.player-two-score').innerText = "Player 2 Score: " + score // (player 2 score only?)
+                        // }
 
-                    }
                 }
             }
         }
+
         game.startTimer()
         game.addPlayers()
     },
 
     startTimer: function() {
         this.intervalID = setInterval(() => {
-            this.timeElapsed++
+            this.timeElapsed--
+            if (this.timeElapsed === 0 ){
+                this.stopTimer()
+            }
         }, 1000)
 
     },
 
     stopTimer: function() {
         clearInterval(this.intervalID)
+        this.timeElapsed = 10
         game.switchTurn() // this works -- changes the active player from 1 to 2 and back everytime.
         console.log(game.activePlayer);
 
