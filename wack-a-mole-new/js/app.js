@@ -1,12 +1,24 @@
 console.log("wack a mole");
 
 class Player {
-  constructor() {
-    
+  constructor(obj) {
+    this.name = name
+    this.playerScore = score
   }
 }
 
 const game = {
+    playerScore: 0, // in CL -- when game.player (after game.addPLayer() -- shows the correct score (current score)
+    // playerNum: null,
+    name: [], // in CL -- when game.player -- name is undefined... why? object object?
+    player: null,
+
+    addPlayer: function(str) {
+        const player1 = new Player(str)
+        this.name = str
+        this.player = player1
+
+    },
 
     start: function() {
         button = document.querySelector('.button')
@@ -48,6 +60,7 @@ const game = {
                     }
                     document.querySelector('.player-one-score').innerText = score
                     // document.querySelector('.player-two-score').innerText = pTwoScore
+
                     // how to keep the player1 and player 2 text in the box?
 
                 }
