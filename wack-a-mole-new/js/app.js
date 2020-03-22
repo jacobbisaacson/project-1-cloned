@@ -23,15 +23,15 @@ const game = {
     intervalID: null,
 
     addPlayers: function() {
-            const player1 = new Player("Player One")
-            this.players.push(player1)
-            const player2 = new Player("Player Two")
-            this.players.push(player2)
-            this.activePlayer = this.players[0]
+        const player1 = new Player("Player One")
+        this.players.push(player1)
+        const player2 = new Player("Player Two")
+        this.players.push(player2)
+        this.activePlayer = this.players[0]
     },
 
     switchTurn: function() {
-        if(this.players.length >= 2 && this.activePlayer === this.players[0]) {
+        if (this.players.length >= 2 && this.activePlayer === this.players[0]) {
             this.activePlayer = this.players[1]
         } else {
             this.activePlayer = this.players[0]
@@ -39,51 +39,51 @@ const game = {
     },
 
     start: function() {
-        if(this.activeplayer === this.players[0]) {
+        if (this.activeplayer === this.players[0]) {
 
-        button = document.querySelector('.button')
-        button.onclick = function() {
-            const mole = document.createElement("div")
-            mole.id = "mole"
+            button = document.querySelector('.button')
+            button.onclick = function() {
+                const mole = document.createElement("div")
+                mole.id = "mole"
 
-            setInterval(() => {
-                timer = Math.random()
+                setInterval(() => {
+                    timer = Math.random()
 
-                if (timer > 0.90) {
-                    cols = document.querySelectorAll(`.row .col`)
-                    for (let i = 0; i < cols.length; i++) {
-                        cols[i].innerHTML = ""
+                    if (timer > 0.90) {
+                        cols = document.querySelectorAll(`.row .col`)
+                        for (let i = 0; i < cols.length; i++) {
+                            cols[i].innerHTML = ""
+                        }
+                        return
                     }
-                    return
-                }
-                if (timer > 0.5) {
-                    return
-                }
-
-                randRow = Math.floor(Math.random() * 3) + 1
-                randCol = Math.floor(Math.random() * 3) + 1
-                document.querySelector(`.row${randRow} .col${randCol}`).appendChild(mole)
-            }, 600)
-
-            score = 0 // where the score starts when the button to start the game is clickd
-            moles = document.getElementsByClassName(`col`)
-
-            for (let i = 0; i < moles.length; i++) {
-                moles[i].onclick = function(event) {
-                    if (event.currentTarget.innerHTML == "") {
-                        score -= 1
-                        // gotta get player 2 score stuff in here
-                    } else {
-                        score += 2
-                        // gotta get player 2 score stuff in here
+                    if (timer > 0.5) {
+                        return
                     }
-                    document.querySelector('.player-one-score').innerText = "Player 1 Score: " + score // (player 1 score only?)
-                    // document.querySelector('.player-two-score').innerText = "Player 2 Score: " + score // (player 2 score only?)
 
+                    randRow = Math.floor(Math.random() * 3) + 1
+                    randCol = Math.floor(Math.random() * 3) + 1
+                    document.querySelector(`.row${randRow} .col${randCol}`).appendChild(mole)
+                }, 600)
+
+                score = 0 // where the score starts when the button to start the game is clickd
+                moles = document.getElementsByClassName(`col`)
+
+                for (let i = 0; i < moles.length; i++) {
+                    moles[i].onclick = function(event) {
+                        if (event.currentTarget.innerHTML == "") {
+                            score -= 1
+                            // gotta get player 2 score stuff in here
+                        } else {
+                            score += 2
+                            // gotta get player 2 score stuff in here
+                        }
+                        document.querySelector('.player-one-score').innerText = "Player 1 Score: " + score // (player 1 score only?)
+                        // document.querySelector('.player-two-score').innerText = "Player 2 Score: " + score // (player 2 score only?)
+
+                    }
                 }
             }
         }
-    }
         game.startTimer()
         game.addPlayers()
     },
@@ -96,10 +96,10 @@ const game = {
     },
 
     stopTimer: function() {
-            clearInterval(this.intervalID)
-            game.switchTurn() // this works -- changes the active player from 1 to 2 and back everytime.
-            console.log(game.activePlayer);
-        
+        clearInterval(this.intervalID)
+        game.switchTurn() // this works -- changes the active player from 1 to 2 and back everytime.
+        console.log(game.activePlayer);
+
     }
 }
 
