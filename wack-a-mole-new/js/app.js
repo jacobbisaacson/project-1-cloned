@@ -1,15 +1,9 @@
 console.log("wack a mole");
 
 class Player {
-    constructor() {
+    constructor(name) {
         this.name = name
-        // this.playerScore = score
-        // this.turn = turn
-        this.turn = true
-    }
-
-    setTurn() {
-        this.turn = false
+        // this.playerScore = 0
     }
 }
 
@@ -20,46 +14,33 @@ class Player {
 // 4. score and moles are defined INSIDE of the start --> setInterval method.  Does that matter?  Shouldn't be in the CLASS?
 // 5. for timer -- does switiching players need to happen in that method?
 
-
-
-
 const game = {
-    playerScore: 0, // in CL -- when game.player (after game.addPLayer() -- shows the correct score (current score)
-    // playerNum: null,
-    names: [], // in CL -- when game.player -- name is undefined... why? object object?
+    // playerScore: 0, // in CL -- when game.player (after game.addPLayer() -- 
+    // shows the correct score (current score) <--this is now activeplayer.score
     players: [],
+    activePlayer: null,
     timeElapsed: 0,
     intervalID: null,
 
     addPlayers: function() {
-        for (let i = 0; i < 2; i++) {
-            const player1 = new Player()
-            this.players = player1
-            player1.name = "Player One"
-
-        }
-    },
-
-    checkTurn: function() {
-        // maybe set the turn timer first, 
-        // then a series of if statements, if the turntimer has expired, then shifts turns
-        // 
+            const player1 = new Player("Player One")
+            this.players.push(player1)
+            const player2 = new Player("Player Two")
+            this.players.push(player2)
+            this.activePlayer = this.players[0]
     },
 
     switchTurn: function() {
-        if (game.timeElapsed >= 15) {
-            game.setTurn() // this isn't working (not changing to false)
+        if(this.players.length >= 2 && this.activePlayer === this.players[0]) {
+            this.activePlayer = this.players[1]
+        } else {
+            this.activePlayer = this.players[0]
         }
     },
 
-    // addPlayer2: function() {
-    //     const player2 = new Player()
-    //     this.players = player2
-    //     player2.name = "Player Two"
-
-    // },
-
     start: function() {
+        if(this.activeplayer === this.players[0]) {
+
         button = document.querySelector('.button')
         button.onclick = function() {
             const mole = document.createElement("div")
@@ -71,7 +52,6 @@ const game = {
                 if (timer > 0.90) {
                     cols = document.querySelectorAll(`.row .col`)
                     for (let i = 0; i < cols.length; i++) {
-                        // console.log(""
                         cols[i].innerHTML = ""
                     }
                     return
@@ -98,11 +78,12 @@ const game = {
                         // gotta get player 2 score stuff in here
                     }
                     document.querySelector('.player-one-score').innerText = "Player 1 Score: " + score // (player 1 score only?)
-                    // document.querySelector('.player-two-score').innerText = "Player 2 Score: " + score (player 2 score only?)
+                    // document.querySelector('.player-two-score').innerText = "Player 2 Score: " + score // (player 2 score only?)
 
                 }
             }
         }
+    }
         game.startTimer()
         game.addPlayers()
     },
@@ -115,17 +96,34 @@ const game = {
     },
 
     stopTimer: function() {
-        if (game.timeElapsed >= 15) {
             clearInterval(this.intervalID)
-            return
-        }
-        // console.log(
+            game.switchTurn() // this works -- changes the active player from 1 to 2 and back everytime.
+            console.log(game.activePlayer);
+        
     }
+}
+
+game.start()
 
     // window.setInterval(play(opp,player),100);
-}
-game.start()
+
+    // addPlayer2: function() {
+    //     const player2 = new Player()
+    //     this.players = player2
+    //     player2.name = "Player Two"
+
+    // },
+
+    // checkTurn: function() {
+    //     // maybe set the turn timer first, 
+    //     // then a series of if statements, if the turntimer has expired, then shifts turns
+    //     // 
+    // },
 
 
 //connect scoring to player 1's scoreboard -- done
 //do the same for player 2's once its set up with a turn
+
+
+
+
