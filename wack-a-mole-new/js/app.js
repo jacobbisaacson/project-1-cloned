@@ -1,26 +1,63 @@
 console.log("wack a mole");
 
 class Player {
-  constructor(obj) {
-    this.name = name
-    this.playerScore = score
-    this.turn = turn
-    this.turnTime = 0
-  }
+    constructor() {
+        this.name = name
+        // this.playerScore = score
+        // this.turn = turn
+        this.turn = true
+    }
+
+    setTurn() {
+        this.turn = false
+    }
 }
+
+///// FOR TIM HELP /////
+// 1. need to set up a timer so that each turn has 30 seconds
+// 2. doing the time, so that I can set up the next players turn (to actually make it a 2 player game)
+// 3. RQ -- adding images to the moles, instead of the red circles
+// 4. score and moles are defined INSIDE of the start --> setInterval method.  Does that matter?  Shouldn't be in the CLASS?
+// 5. for timer -- does switiching players need to happen in that method?
+
+
+
 
 const game = {
     playerScore: 0, // in CL -- when game.player (after game.addPLayer() -- shows the correct score (current score)
     // playerNum: null,
-    name: [], // in CL -- when game.player -- name is undefined... why? object object?
-    player: null,
+    names: [], // in CL -- when game.player -- name is undefined... why? object object?
+    players: [],
+    timeElapsed: 0,
+    intervalID: null,
 
-    addPlayer: function(str) {
-        const player1 = new Player(str)
-        this.name = str
-        this.player = player1
+    addPlayers: function() {
+        for (let i = 0; i < 2; i++) {
+            const player1 = new Player()
+            this.players = player1
+            player1.name = "Player One"
 
+        }
     },
+
+    checkTurn: function() {
+        // maybe set the turn timer first, 
+        // then a series of if statements, if the turntimer has expired, then shifts turns
+        // 
+    },
+
+    switchTurn: function() {
+        if (game.timeElapsed >= 15) {
+            setTurn() // this isn't working (not changing to false)
+        }
+    },
+
+    // addPlayer2: function() {
+    //     const player2 = new Player()
+    //     this.players = player2
+    //     player2.name = "Player Two"
+
+    // },
 
     start: function() {
         button = document.querySelector('.button')
@@ -52,34 +89,43 @@ const game = {
             moles = document.getElementsByClassName(`col`)
 
             for (let i = 0; i < moles.length; i++) {
-                moles[i].onclick = function(e) {
-                    if (e.currentTarget.innerHTML == "") {
+                moles[i].onclick = function(event) {
+                    if (event.currentTarget.innerHTML == "") {
                         score -= 1
-                        // pTwoScore += -1
+                        // gotta get player 2 score stuff in here
                     } else {
                         score += 2
-                        // pTwoScore += 2
+                        // gotta get player 2 score stuff in here
                     }
-                    document.querySelector('.player-one-score').innerText = "Player 1 Score: " + score
-                    // document.querySelector('.player-two-score').innerText = pTwoScore
-
-                    // how to keep the player1 and player 2 text in the box?
+                    document.querySelector('.player-one-score').innerText = "Player 1 Score: " + score // (player 1 score only?)
+                    // document.querySelector('.player-two-score').innerText = "Player 2 Score: " + score (player 2 score only?)
 
                 }
             }
         }
+        game.startTimer()
+        game.addPlayers()
     },
 
-    checkTurn: function() {
-        // maybe set the turn timer first, 
-        // then a series of if statements, if the turntimer has expired, then shifts turns
-        // 
+    startTimer: function() {
+        this.intervalID = setInterval(() => {
+            this.timeElapsed++
+        }, 1000)
+
+    },
+
+    stopTimer: function() {
+        if (game.timeElapsed >= 15) {
+            clearInterval(this.intervalID)
+            return
+        }
+        // console.log(
     }
+
+    // window.setInterval(play(opp,player),100);
 }
 game.start()
 
-//make timer to shut it off for each turn
-//give player 2 a turn
-//connect scoring to player 2's scoreboard
-// score and moles should be outside of the methods and in the STATE, but cant for some reason, doe stha tmatteR?
 
+//connect scoring to player 1's scoreboard -- done
+//do the same for player 2's once its set up with a turn
