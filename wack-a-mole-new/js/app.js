@@ -65,7 +65,7 @@ const game = {
                     document.querySelector(`.row${randRow} .col${randCol}`).appendChild(mole)
                 }, 600)
 
-                score = 0 // where the score starts when the button to start the game is clickd
+                score = 0 // where the score starts when the button to start the game is clicked
                 moles = document.getElementsByClassName(`col`)
 
                 for (let i = 0; i < moles.length; i++) {
